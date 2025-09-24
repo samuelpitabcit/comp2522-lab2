@@ -20,17 +20,23 @@ public class Creature {
     /**
      * Constructs a new Creature instance.
      *
-     * @param name The name of the creature.
+     * @param name        The name of the creature.
      * @param dateOfBirth The date of birth of the creature.
-     * @param health The initial health of the creature.
+     * @param health      The initial health of the creature.
      */
     public Creature(final String name, final LocalDate dateOfBirth, final int health) {
+        validateName(name);
         validateDateOfBirth(dateOfBirth);
         validateHealth(health);
 
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.health = health;
+    }
+
+    private static void validateName(final String name) {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException("Name is null or empty");
     }
 
     private static void validateDateOfBirth(final LocalDate dateOfBirth) {
