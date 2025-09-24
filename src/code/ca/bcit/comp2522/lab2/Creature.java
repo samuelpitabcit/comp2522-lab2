@@ -9,7 +9,8 @@ import java.time.temporal.ChronoUnit;
  * @author Samuel Pita
  * @version 1.0
  */
-public class Creature {
+public class Creature
+{
     private static final int MIN_HEALTH = 0;
     private static final int MAX_HEALTH = 100;
 
@@ -24,7 +25,10 @@ public class Creature {
      * @param dateOfBirth The date of birth of the creature.
      * @param health      The initial health of the creature.
      */
-    public Creature(final String name, final LocalDate dateOfBirth, final int health) {
+    public Creature(final String name,
+                    final LocalDate dateOfBirth,
+                    final int health)
+    {
         validateName(name);
         validateDateOfBirth(dateOfBirth);
         validateHealth(health);
@@ -34,21 +38,28 @@ public class Creature {
         this.health = health;
     }
 
-    private static void validateName(final String name) {
+    private static void validateName(final String name)
+    {
         if (name == null || name.isEmpty())
+        {
             throw new IllegalArgumentException("Name is null or empty");
+        }
     }
 
-    private static void validateDateOfBirth(final LocalDate dateOfBirth) {
+    private static void validateDateOfBirth(final LocalDate dateOfBirth)
+    {
         final LocalDate currentDate;
 
         currentDate = LocalDate.now();
 
         if (dateOfBirth.isAfter(currentDate))
+        {
             throw new IllegalArgumentException("Birth date must not be set in the future.");
+        }
     }
 
-    private static void validateHealth(final int health) {
+    private static void validateHealth(final int health)
+    {
         final int minHealthSetting;
         final int maxHealthSetting;
 
@@ -56,7 +67,9 @@ public class Creature {
         maxHealthSetting = MAX_HEALTH;
 
         if (health < minHealthSetting || health > maxHealthSetting)
+        {
             throw new IllegalArgumentException("Health must be between " + minHealthSetting + " and " + maxHealthSetting);
+        }
     }
 
     /**
@@ -64,9 +77,10 @@ public class Creature {
      * A creature is considered alive if its health is greater than {@value #MIN_HEALTH}.
      *
      * @return {@code true} if the creature's health is greater than {@value #MIN_HEALTH},
-     *         otherwise {@code false}.
+     * otherwise {@code false}.
      */
-    public boolean isAlive() {
+    public boolean isAlive()
+    {
         return this.health > MIN_HEALTH;
     }
 
@@ -76,14 +90,19 @@ public class Creature {
      *
      * @param damage The amount of damage to inflict. Must be a non-negative number.
      */
-    public void takeDamage(final int damage) {
+    public void takeDamage(final int damage)
+    {
         if (damage < 0)
+        {
             throw new DamageException("Damage value is negative");
+        }
 
         this.health -= damage;
 
         if (this.health < MIN_HEALTH)
+        {
             this.health = MIN_HEALTH;
+        }
     }
 
     /**
@@ -92,14 +111,19 @@ public class Creature {
      *
      * @param healAmount The amount of health to restore. Must be a non-negative number.
      */
-    public void heal(final int healAmount) {
+    public void heal(final int healAmount)
+    {
         if (healAmount < 0)
+        {
             throw new HealingException("Healing value is negative");
+        }
 
         this.health += healAmount;
 
         if (this.health > MAX_HEALTH)
+        {
             this.health = MAX_HEALTH;
+        }
     }
 
     /**
@@ -107,7 +131,8 @@ public class Creature {
      *
      * @return The number of full years since the creature's birthdate.
      */
-    public long getAgeYears() {
+    public long getAgeYears()
+    {
         final LocalDate currentDate;
 
         currentDate = LocalDate.now();
@@ -119,7 +144,8 @@ public class Creature {
     /**
      * Prints the name, date of birth, and health of the Creature in the console.
      */
-    public void getDetails() {
+    public void getDetails()
+    {
         System.out.println("Name: " + this.name);
         System.out.println("Date of birth: " + this.dateOfBirth);
         System.out.println("Health: " + this.health);
