@@ -72,7 +72,7 @@ public class Creature {
      */
     public void takeDamage(final int damage) {
         if (damage < 0)
-            throw new IllegalArgumentException("");
+            throw new DamageException("Damage value is negative");
 
         this.health -= damage;
 
@@ -88,7 +88,7 @@ public class Creature {
      */
     public void heal(final int healAmount) {
         if (healAmount < 0)
-            throw new IllegalArgumentException("");
+            throw new HealingException("Healing value is negative");
 
         this.health += healAmount;
 
