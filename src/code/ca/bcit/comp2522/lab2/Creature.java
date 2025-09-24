@@ -11,9 +11,18 @@ import java.time.temporal.ChronoUnit;
  */
 public class Creature
 {
+    // Damage constants.
+    private static final int MIN_DAMAGE = 0;
+
+    // Healing constants.
+    private static final int MIN_HEAL_AMOUNT = 0;
+
+    // Health constants.
+    private static final int MIN_HEALTH_SETTING = 1;
     private static final int MIN_HEALTH = 0;
     private static final int MAX_HEALTH = 100;
 
+    // Instance identifiers.
     private final String name;
     private final LocalDate dateOfBirth;
     private int health;
@@ -60,15 +69,10 @@ public class Creature
 
     private static void validateHealth(final int health)
     {
-        final int minHealthSetting;
-        final int maxHealthSetting;
-
-        minHealthSetting = 1;
-        maxHealthSetting = MAX_HEALTH;
-
-        if (health < minHealthSetting || health > maxHealthSetting)
+        if (health < MIN_HEALTH_SETTING || health > MAX_HEALTH)
         {
-            throw new IllegalArgumentException("Health must be between " + minHealthSetting + " and " + maxHealthSetting);
+            throw new IllegalArgumentException(
+                "Health must be between " + MIN_HEALTH_SETTING + " and " + MAX_HEALTH);
         }
     }
 
@@ -77,7 +81,7 @@ public class Creature
      * A creature is considered alive if its health is greater than {@value #MIN_HEALTH}.
      *
      * @return {@code true} if the creature's health is greater than {@value #MIN_HEALTH},
-     * otherwise {@code false}.
+     *         otherwise {@code false}.
      */
     public boolean isAlive()
     {
@@ -88,13 +92,15 @@ public class Creature
      * Inflicts damage on the creature, reducing its health.
      * The creature's health will not fall below {@value #MIN_HEALTH}.
      *
-     * @param damage The amount of damage to inflict. Must be a non-negative number.
+     * @param damage           The amount of damage to inflict. Must be at least
+     *                         {@value MIN_DAMAGE}.
+     * @throws DamageException If the damage amount is less than {@value MIN_DAMAGE}.
      */
     public void takeDamage(final int damage)
     {
-        if (damage < 0)
+        if (damage < MIN_DAMAGE)
         {
-            throw new DamageException("Damage value is negative");
+            throw new DamageException("Damage value is less than " + MIN_DAMAGE);
         }
 
         this.health -= damage;
@@ -109,13 +115,15 @@ public class Creature
      * Heals the creature, increasing its health.
      * The creature's health will not exceed {@value #MAX_HEALTH}.
      *
-     * @param healAmount The amount of health to restore. Must be a non-negative number.
+     * @param healAmount        The amount of health to restore. Must be at least
+     *                          {@value MIN_HEAL_AMOUNT}.
+     * @throws HealingException If the heal amount is less than {@value MIN_HEAL_AMOUNT}.
      */
     public void heal(final int healAmount)
     {
-        if (healAmount < 0)
+        if (healAmount < MIN_HEAL_AMOUNT)
         {
-            throw new HealingException("Healing value is negative");
+            throw new HealingException("Healing value is less than " + MIN_HEAL_AMOUNT);
         }
 
         this.health += healAmount;
