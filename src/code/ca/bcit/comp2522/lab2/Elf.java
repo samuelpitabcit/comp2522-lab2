@@ -19,6 +19,16 @@ public class Elf extends Creature
     // Instance variables.
     private int mana;
 
+    /**
+     * Constructs a new Elf instance.
+     *
+     * @param name The name of the creature.
+     * @param dateOfBirth The date of birth of the creature.
+     * @param health The initial health of the creature.
+     * @param mana The initial mana of the elf.
+     * @throws IllegalArgumentException If the mana is not within the valid range of
+     *                                  {@value MIN_MANA} to {@value MAX_MANA}.
+     */
     public Elf(final String name,
                final LocalDate dateOfBirth,
                final int health,
@@ -39,6 +49,15 @@ public class Elf extends Creature
         }
     }
 
+    /**
+     * Reduces the elf's mana and inflicts damage on another creature.
+     * The mana is reduced by {@value MANA_USAGE} and the target creature
+     * takes {@value MANA_DAMAGE} damage.
+     *
+     * @param creature The creature to inflict damage upon.
+     * @throws LowManaException If the elf's current mana is less than
+     *                          the required {@value MANA_USAGE}.
+     */
     public void castSpell(final Creature creature) throws LowManaException
     {
         if (this.mana < MANA_USAGE)
@@ -50,6 +69,12 @@ public class Elf extends Creature
         creature.takeDamage(MANA_DAMAGE);
     }
 
+    /**
+     * Restores the elf's mana by a specified amount.
+     * The elf's mana will not exceed {@value MAX_MANA}.
+     *
+     * @param manaAmount The amount of mana to restore.
+     */
     public void restoreMana(final int manaAmount)
     {
         this.mana += manaAmount;
@@ -60,6 +85,10 @@ public class Elf extends Creature
         }
     }
 
+    /**
+     * Prints the details of the elf, including its name, health, and mana.
+     * This method overrides the parent class's {@code getDetails()} method.
+     */
     @Override
     public void getDetails()
     {
