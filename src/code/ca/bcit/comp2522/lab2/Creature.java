@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 /**
- * Creature class.
+ * Creature class with name, birthdate, and health parameters.
  *
  * @author Samuel Pita
  * @version 1.0

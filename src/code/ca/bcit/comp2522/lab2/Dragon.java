@@ -3,6 +3,8 @@ package ca.bcit.comp2522.lab2;
 import java.time.LocalDate;
 
 /**
+ * Dragon class that extends from Creature. It has firepower abilities.
+ *
  * @author Samuel Pita
  * @version 1.0
  */
@@ -11,6 +13,7 @@ public class Dragon extends Creature
     // Firepower constants.
     private static final int FIRE_POWER_USAGE = 10;
     private static final int FIRE_POWER_DAMAGE = 20;
+    private static final int MIN_FIRE_POWER = 0;
     private static final int MAX_FIRE_POWER = 100;
 
     // Instance variables.
@@ -23,8 +26,8 @@ public class Dragon extends Creature
      * @param dateOfBirth The date of birth of the creature.
      * @param health      The initial health of the creature.
      * @param firePower   The initial firepower of the dragon.
-     * @throws IllegalArgumentException if the firepower is not within the valid range of
-     *                                  {@value #FIRE_POWER_USAGE} to {@value #MAX_FIRE_POWER}.
+     * @throws IllegalArgumentException If the firepower is not within the valid range of
+     *                                  {@value MIN_FIRE_POWER} to {@value MAX_FIRE_POWER}.
      */
     public Dragon(final String name,
                   final LocalDate dateOfBirth,
@@ -39,21 +42,21 @@ public class Dragon extends Creature
 
     private static void validateFirePower(final int firePower)
     {
-        if (firePower < FIRE_POWER_USAGE || firePower > MAX_FIRE_POWER)
+        if (firePower < MIN_FIRE_POWER || firePower > MAX_FIRE_POWER)
         {
             throw new IllegalArgumentException(
-                "Fire power must be set between " + FIRE_POWER_USAGE + " and " + MAX_FIRE_POWER);
+                "Fire power must be set between " + MIN_FIRE_POWER + " and " + MAX_FIRE_POWER);
         }
     }
 
     /**
      * Reduces the dragon's firepower and inflicts damage on another creature.
-     * The firepower is reduced by {@value #FIRE_POWER_USAGE} and the target creature
-     * takes {@value #FIRE_POWER_DAMAGE} damage.
+     * The firepower is reduced by {@value FIRE_POWER_USAGE} and the target creature
+     * takes {@value FIRE_POWER_DAMAGE} damage.
      *
      * @param creature The creature to inflict damage upon.
-     * @throws LowFirePowerException if the dragon's current firepower is less than
-     * the required {@value #FIRE_POWER_USAGE}.
+     * @throws LowFirePowerException If the dragon's current firepower is less than
+     *                               the required {@value FIRE_POWER_USAGE}.
      */
     public void breatheFire(final Creature creature) throws LowFirePowerException
     {
@@ -69,7 +72,7 @@ public class Dragon extends Creature
 
     /**
      * Restores the dragon's firepower by a specified amount.
-     * The dragon's firepower will not exceed {@value #MAX_FIRE_POWER}.
+     * The dragon's firepower will not exceed {@value MAX_FIRE_POWER}.
      *
      * @param firePowerAmount The amount of firepower to restore.
      */
@@ -87,7 +90,7 @@ public class Dragon extends Creature
      * Prints the details of the dragon, including its name, birthdate,
      * health, and firepower.
      * <br>
-     * This method overrides the parent class's `getDetails()` method.
+     * This method overrides the parent class's {@code getDetails()} method.
      */
     @Override
     public void getDetails()
