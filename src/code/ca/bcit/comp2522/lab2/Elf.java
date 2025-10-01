@@ -22,10 +22,10 @@ public class Elf extends Creature
     /**
      * Constructs a new Elf instance.
      *
-     * @param name The name of the creature.
+     * @param name        The name of the creature.
      * @param dateOfBirth The date of birth of the creature.
-     * @param health The initial health of the creature.
-     * @param mana The initial mana of the elf.
+     * @param health      The initial health of the creature.
+     * @param mana        The initial mana of the elf.
      * @throws IllegalArgumentException If the mana is not within the valid range of
      *                                  {@value MIN_MANA} to {@value MAX_MANA}.
      */

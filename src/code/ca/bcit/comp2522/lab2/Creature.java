@@ -42,9 +42,9 @@ public class Creature
         validateDateOfBirth(dateOfBirth);
         validateHealth(health);
 
-        this.name = name;
+        this.name        = name;
         this.dateOfBirth = dateOfBirth;
-        this.health = health;
+        this.health      = health;
     }
 
     private static void validateName(final String name)
@@ -81,7 +81,7 @@ public class Creature
      * A creature is considered alive if its health is greater than {@value #MIN_HEALTH}.
      *
      * @return {@code true} if the creature's health is greater than {@value #MIN_HEALTH},
-     *         otherwise {@code false}.
+     * otherwise {@code false}.
      */
     public boolean isAlive()
     {
@@ -92,8 +92,8 @@ public class Creature
      * Inflicts damage on the creature, reducing its health.
      * The creature's health will not fall below {@value #MIN_HEALTH}.
      *
-     * @param damage           The amount of damage to inflict. Must be at least
-     *                         {@value MIN_DAMAGE}.
+     * @param damage The amount of damage to inflict. Must be at least
+     *               {@value MIN_DAMAGE}.
      * @throws DamageException If the damage amount is less than {@value MIN_DAMAGE}.
      */
     public void takeDamage(final int damage)
@@ -115,8 +115,8 @@ public class Creature
      * Heals the creature, increasing its health.
      * The creature's health will not exceed {@value #MAX_HEALTH}.
      *
-     * @param healAmount        The amount of health to restore. Must be at least
-     *                          {@value MIN_HEAL_AMOUNT}.
+     * @param healAmount The amount of health to restore. Must be at least
+     *                   {@value MIN_HEAL_AMOUNT}.
      * @throws HealingException If the heal amount is less than {@value MIN_HEAL_AMOUNT}.
      */
     public void heal(final int healAmount)
