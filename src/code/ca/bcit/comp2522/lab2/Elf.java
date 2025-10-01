@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Elf class that extends from Creature. It has spell-casting abilities, using mana.
  *
- * @author Jacob, May, Samuel, Son
+ * @author Jacob, Meiko, Samuel, Son
  * @version 1.0
  */
 public class Elf extends Creature

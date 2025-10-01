@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * Creature class with name, birthdate, and health parameters.
  *
- * @author Samuel Pita
+ * @author Jacob, Samuel
  * @version 1.0
  */
 public class Creature

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Dragon class that extends from Creature. It has firepower abilities.
  *
- * @author Samuel Pita
+ * @author Jacob, Meiko, Samuel, Son
  * @version 1.0
  */
 public class Dragon extends Creature
