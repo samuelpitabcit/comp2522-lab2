@@ -30,7 +30,7 @@ public class Elf extends Creature
      *                                  {@value MIN_MANA} to {@value MAX_MANA}.
      */
     public Elf(final String name,
-               final LocalDate dateOfBirth,
+               final Date dateOfBirth,
                final int health,
                final int mana)
     {

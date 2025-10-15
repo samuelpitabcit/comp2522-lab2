@@ -30,7 +30,7 @@ public class Dragon extends Creature
      *                                  {@value MIN_FIRE_POWER} to {@value MAX_FIRE_POWER}.
      */
     public Dragon(final String name,
-                  final LocalDate dateOfBirth,
+                  final Date dateOfBirth,
                   final int health,
                   final int firePower)
     {

@@ -28,7 +28,7 @@ public class Orc extends Creature
      * @param health      The initial health of the creature.
      */
     public Orc(final String name,
-               final LocalDate dateOfBirth,
+               final Date dateOfBirth,
                final int health,
                final int rage)
     {

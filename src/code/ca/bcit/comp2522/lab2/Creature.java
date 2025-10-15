@@ -1,8 +1,5 @@
 package ca.bcit.comp2522.lab2;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
 /**
  * Creature class with name, birthdate, and health parameters.
  *
@@ -122,13 +119,13 @@ public class Creature
     }
 
     /**
-     * Calculates the creature's age in full years based on its date of birth.
+     * Calculates the creature's age in years based on its date of birth.
      *
-     * @return The number of full years since the creature's birthdate.
+     * @return The number of years since the creature's birthdate.
      */
-    public long getAgeYears()
+    public int getAgeYears()
     {
-
+        return Date.CURRENT_YEAR - this.dateOfBirth.getYear();
     }
 
     /**
