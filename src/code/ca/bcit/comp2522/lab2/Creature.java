@@ -43,14 +43,25 @@ public class Creature
         this.health      = health;
     }
 
+    /**
+     * Throws if the name is null or blank.
+     *
+     * @param name The name.
+     */
     private static void validateName(final String name)
     {
-        if (name == null || name.isEmpty())
+        if (name == null || name.isBlank())
         {
             throw new IllegalArgumentException("Name is null or empty");
         }
     }
 
+    /**
+     * Throws if the health value is less than the {@value MIN_HEALTH_SETTING}
+     * or greater than {@value MAX_HEALTH}.
+     *
+     * @param health The health.
+     */
     private static void validateHealth(final int health)
     {
         if (health < MIN_HEALTH_SETTING || health > MAX_HEALTH)

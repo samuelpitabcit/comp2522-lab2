@@ -8,7 +8,6 @@ package ca.bcit.comp2522.lab2;
  */
 public final class CreatureTest
 {
-
     // Creature constants for Smaug the Dragon.
     private static final String DRAGON_NAME = "Smaug";
     private static final int DRAGON_BIRTH_YEAR = 1850;

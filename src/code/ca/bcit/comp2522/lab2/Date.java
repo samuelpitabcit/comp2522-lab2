@@ -334,7 +334,6 @@ public class Date
         divFirstDivisor = lastTwoDigitsOfYear / WEEKDAY_CALC_FIRST_DIV;
         // (Step 2) Remainder of dividing last two digits of year by 12.
         modFirstDivisor = lastTwoDigitsOfYear % WEEKDAY_CALC_FIRST_DIV;
-
         // (Step 3) Divide the remainder by 4.
         divSecondDivisor = modFirstDivisor / WEEKDAY_CALC_SECOND_DIV;
 
