@@ -9,29 +9,37 @@ package ca.bcit.comp2522.lab2;
 public final class CreatureTest
 {
 
-    // Creature constants for Smaug the Dragon
-    private static final int SMAUG_BIRTH_YEAR = 1850;
-    private static final int SMAUG_BIRTH_MONTH = 5;
-    private static final int SMAUG_BIRTH_DAY = 12;
-    private static final int SMAUG_HEALTH_POINTS = 100;
-    private static final int SMAUG_FIRE_POWER_UNITS = 95;
+    // Creature constants for Smaug the Dragon.
+    private static final String DRAGON_NAME = "Smaug";
+    private static final int DRAGON_BIRTH_YEAR = 1850;
+    private static final int DRAGON_BIRTH_MONTH = 5;
+    private static final int DRAGON_BIRTH_DAY = 12;
+    private static final int DRAGON_HEALTH = 100;
+    private static final int DRAGON_FIRE_POWER = 95;
 
-    // Creature constants for Legolas the Elf
-    private static final int LEGOLAS_BIRTH_YEAR = 2005;
-    private static final int LEGOLAS_BIRTH_MONTH = 8;
-    private static final int LEGOLAS_BIRTH_DAY = 22;
-    private static final int LEGOLAS_HEALTH_POINTS = 80;
-    private static final int LEGOLAS_MANA_UNITS = 48;
+    // Creature constants for Legolas the Elf.
+    private static final String ELF_NAME = "Legolas";
+    private static final int ELF_BIRTH_YEAR = 2005;
+    private static final int ELF_BIRTH_MONTH = 8;
+    private static final int ELF_BIRTH_DAY = 22;
+    private static final int ELF_HEALTH = 80;
+    private static final int ELF_MANA = 48;
 
-    // Creature constants for Grishnákh the Orc
-    private static final int GRISHNAKH_BIRTH_YEAR = 2010;
-    private static final int GRISHNAKH_BIRTH_MONTH = 2;
-    private static final int GRISHNAKH_BIRTH_DAY = 3;
-    private static final int GRISHNAKH_HEALTH_POINTS = 90;
-    private static final int GRISHNAKH_RAGE_UNITS = 25;
+    // Creature constants for Grishnákh the Orc.
+    private static final String ORC_NAME = "Grishnákh";
+    private static final int ORC_BIRTH_YEAR = 2010;
+    private static final int ORC_BIRTH_MONTH = 2;
+    private static final int ORC_BIRTH_DAY = 3;
+    private static final int ORC_HEALTH = 90;
+    private static final int ORC_RAGE = 25;
 
-    // Battle constants
-    private static final int EXHAUST_FIRE_POWER_ATTEMPTS = 9;
+    // Creature constants for the mystery creature.
+    private static final String MYSTERY_NAME = "Legolas's Brother";
+    private static final int MYSTERY_BIRTH_YEAR = 1899;
+    private static final int MYSTERY_BIRTH_MONTH = 10;
+    private static final int MYSTERY_BIRTH_DAY = 24;
+    private static final int MYSTERY_HEALTH = 100;
+    private static final int MYSTERY_MANA = 40;
 
 
     /**
@@ -44,79 +52,81 @@ public final class CreatureTest
     public static void main(final String[] args)
     {
         // Declare all local variables.
-        final Dragon smaug;
-        final Elf legolas;
-        final Orc grishnakh;
-        final Date smaugBirthDate;
-        final Date legolasBirthDate;
-        final Date grishnakhBirthDate;
+        final Dragon dragon;
+        final Elf elf;
+        final Orc orc;
+        final Creature mystery;
+        final Date dragonBirthDate;
+        final Date elfBirthDate;
+        final Date orcBirthDate;
+        final Date mysteryBirthDate;
 
         // Initialize variables.
-        smaugBirthDate = new Date(SMAUG_BIRTH_YEAR,
-                                  SMAUG_BIRTH_MONTH,
-                                  SMAUG_BIRTH_DAY);
-        smaug          = new Dragon("Smaug",
-                                    smaugBirthDate,
-                                    SMAUG_HEALTH_POINTS,
-                                    SMAUG_FIRE_POWER_UNITS);
+        dragonBirthDate = new Date(DRAGON_BIRTH_YEAR,
+                                   DRAGON_BIRTH_MONTH,
+                                   DRAGON_BIRTH_DAY);
+        dragon          = new Dragon(DRAGON_NAME,
+                                     dragonBirthDate,
+                                     DRAGON_HEALTH,
+                                     DRAGON_FIRE_POWER);
 
-        legolasBirthDate = new Date(LEGOLAS_BIRTH_YEAR,
-                                    LEGOLAS_BIRTH_MONTH,
-                                    LEGOLAS_BIRTH_DAY);
-        legolas          = new Elf("Legolas",
-                                   legolasBirthDate,
-                                   LEGOLAS_HEALTH_POINTS,
-                                   LEGOLAS_MANA_UNITS);
+        elfBirthDate = new Date(ELF_BIRTH_YEAR,
+                                ELF_BIRTH_MONTH,
+                                ELF_BIRTH_DAY);
+        elf          = new Elf(ELF_NAME,
+                               elfBirthDate,
+                               ELF_HEALTH,
+                               ELF_MANA);
 
-        grishnakhBirthDate = new Date(GRISHNAKH_BIRTH_YEAR,
-                                      GRISHNAKH_BIRTH_MONTH,
-                                      GRISHNAKH_BIRTH_DAY);
-        grishnakh          = new Orc("Grishnákh",
-                                     grishnakhBirthDate,
-                                     GRISHNAKH_HEALTH_POINTS,
-                                     GRISHNAKH_RAGE_UNITS);
+        orcBirthDate = new Date(ORC_BIRTH_YEAR,
+                                ORC_BIRTH_MONTH,
+                                ORC_BIRTH_DAY);
+        orc          = new Orc(ORC_NAME,
+                               orcBirthDate,
+                               ORC_HEALTH,
+                               ORC_RAGE);
 
         // Get details.
-        smaug.getDetails();
+        dragon.getDetails();
         System.out.print(System.lineSeparator());
 
-        legolas.getDetails();
+        elf.getDetails();
         System.out.print(System.lineSeparator());
 
-        grishnakh.getDetails();
+        orc.getDetails();
         System.out.print(System.lineSeparator());
 
         // Simulate a fight and handle exceptions.
         try
         {
             System.out.println(
-                "Smaug attacks Legolas; Legolas retaliates; Grishnákh attacks Legolas."
+                "Simulating a fight."
                     + System.lineSeparator());
 
-            smaug.breatheFire(legolas);
-            legolas.castSpell(smaug);
-            grishnakh.berserk(legolas);
+            dragon.breatheFire(elf);
+            elf.castSpell(dragon);
+            orc.berserk(elf);
 
             // Get details.
-            smaug.getDetails();
+            dragon.getDetails();
             System.out.print(System.lineSeparator());
 
-            legolas.getDetails();
+            elf.getDetails();
             System.out.print(System.lineSeparator());
 
-            grishnakh.getDetails();
+            orc.getDetails();
             System.out.print(System.lineSeparator());
-
-            System.out.println(
-                "Smaug exhausts its firepower against Grishnákh."
-                    + System.lineSeparator());
 
             // Demonstrate exception for low firepower by exhausting it
-            for (int i = 0; i < EXHAUST_FIRE_POWER_ATTEMPTS; i++)
-            {
-                // This will eventually throw LowFirePowerException
-                smaug.breatheFire(grishnakh);
-            }
+            System.out.println(
+                dragon.getName() + " exhausts its firepower against " + orc.getName()
+                    + System.lineSeparator());
+
+            dragon.breatheFire(orc);
+            dragon.breatheFire(orc);
+            dragon.breatheFire(orc);
+            dragon.breatheFire(orc);
+            dragon.breatheFire(orc);
         }
         catch (final LowFirePowerException | LowManaException e)
         {
@@ -128,13 +138,54 @@ public final class CreatureTest
                 + System.lineSeparator());
 
         // Get details.
-        smaug.getDetails();
+        dragon.getDetails();
         System.out.print(System.lineSeparator());
 
-        legolas.getDetails();
+        elf.getDetails();
         System.out.print(System.lineSeparator());
 
-        grishnakh.getDetails();
+        orc.getDetails();
         System.out.print(System.lineSeparator());
+
+        // Initialize the mystery creature as a Dragon.
+        mysteryBirthDate = new Date(MYSTERY_BIRTH_YEAR,
+                                    MYSTERY_BIRTH_MONTH,
+                                    MYSTERY_BIRTH_DAY);
+        mystery          = new Elf(MYSTERY_NAME,
+                                   mysteryBirthDate,
+                                   MYSTERY_HEALTH,
+                                   MYSTERY_MANA);
+
+        // Demonstrate the use of .getClass()
+        if (dragon.getClass() != mystery.getClass())
+        {
+            System.out.println(
+                dragon.getName() + " and " + mystery.getName() + " are not the same class.");
+            System.out.print(System.lineSeparator());
+        }
+
+        // Cast the mystery creature, and have it attack the dragon.
+        final Elf mysteryElf;
+        mysteryElf = (Elf) mystery;
+
+        // Simulate another fight, and get an exception.
+        try
+        {
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+            mysteryElf.castSpell(dragon);
+        }
+        catch (LowManaException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
