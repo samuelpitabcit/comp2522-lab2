@@ -15,7 +15,6 @@ public class LowManaException extends Exception
      * indicating which elf has low mana.
      *
      * @param name The name of the elf. Must not be null or blank.
-     * @throws IllegalArgumentException if the provided name is null or blank.
      */
     public LowManaException(final String name)
     {
@@ -32,6 +31,11 @@ public class LowManaException extends Exception
         this.message = sb.toString();
     }
 
+    /**
+     * Throws if the name is null or blank.
+     *
+     * @param name The name.
+     */
     private static void validateName(final String name)
     {
         if (name == null || name.isBlank())

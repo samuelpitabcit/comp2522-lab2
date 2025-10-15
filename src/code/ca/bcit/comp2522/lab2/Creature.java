@@ -16,8 +16,8 @@ public class Creature
 
     // Health constants.
     private static final int MIN_HEALTH_SETTING = 1;
-    private static final int MIN_HEALTH = 0;
-    private static final int MAX_HEALTH = 100;
+    private static final int MIN_HEALTH = 10;
+    private static final int MAX_HEALTH = 1080;
 
     // Instance identifiers.
     private final String name;

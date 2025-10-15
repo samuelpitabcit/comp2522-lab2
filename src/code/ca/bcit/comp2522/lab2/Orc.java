@@ -38,6 +38,12 @@ public class Orc extends Creature
         this.rage = rage;
     }
 
+    /**
+     * Throws if the rage is less than {@value MIN_RAGE} or greater than
+     * {@value MAX_RAGE}.
+     *
+     * @param rage The rage.
+     */
     private static void validateRage(final int rage)
     {
         if (rage < MIN_RAGE || rage > MAX_RAGE)

@@ -26,8 +26,6 @@ public class Elf extends Creature
      * @param dateOfBirth The date of birth of the creature.
      * @param health      The initial health of the creature.
      * @param mana        The initial mana of the elf.
-     * @throws IllegalArgumentException If the mana is not within the valid range of
-     *                                  {@value MIN_MANA} to {@value MAX_MANA}.
      */
     public Elf(final String name,
                final Date dateOfBirth,
@@ -40,6 +38,12 @@ public class Elf extends Creature
         this.mana = mana;
     }
 
+    /**
+     * Throws if the mana is less than {@value MIN_MANA} or greater than
+     * {@value MAX_MANA}.
+     *
+     * @param mana The mana.
+     */
     private static void validateMana(final int mana)
     {
         if (mana < MIN_MANA || mana > MAX_MANA)

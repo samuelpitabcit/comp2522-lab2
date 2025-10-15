@@ -61,7 +61,7 @@ public final class CreatureTest
         final Date orcBirthDate;
         final Date mysteryBirthDate;
 
-        // Initialize variables.
+        // Initialize the dragon.
         dragonBirthDate = new Date(DRAGON_BIRTH_YEAR,
                                    DRAGON_BIRTH_MONTH,
                                    DRAGON_BIRTH_DAY);
@@ -70,6 +70,7 @@ public final class CreatureTest
                                      DRAGON_HEALTH,
                                      DRAGON_FIRE_POWER);
 
+        // Initialize the elf.
         elfBirthDate = new Date(ELF_BIRTH_YEAR,
                                 ELF_BIRTH_MONTH,
                                 ELF_BIRTH_DAY);
@@ -78,6 +79,7 @@ public final class CreatureTest
                                ELF_HEALTH,
                                ELF_MANA);
 
+        // Initialize the orc.
         orcBirthDate = new Date(ORC_BIRTH_YEAR,
                                 ORC_BIRTH_MONTH,
                                 ORC_BIRTH_DAY);

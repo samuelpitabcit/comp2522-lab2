@@ -15,7 +15,6 @@ public class LowFirePowerException extends Exception
      * indicating which dragon has low firepower.
      *
      * @param name The name of the dragon. Must not be null or blank.
-     * @throws IllegalArgumentException if the provided name is null or blank.
      */
     public LowFirePowerException(final String name)
     {
@@ -32,6 +31,11 @@ public class LowFirePowerException extends Exception
         this.message = sb.toString();
     }
 
+    /**
+     * Throws if the name is null or blank.
+     *
+     * @param name The name.
+     */
     private static void validateName(final String name)
     {
         if (name == null || name.isBlank())

@@ -1,6 +1,5 @@
 package ca.bcit.comp2522.lab2;
 
-import java.time.LocalDate;
 
 /**
  * Dragon class that extends from Creature. It has firepower abilities.
@@ -26,8 +25,6 @@ public class Dragon extends Creature
      * @param dateOfBirth The date of birth of the creature.
      * @param health      The initial health of the creature.
      * @param firePower   The initial firepower of the dragon.
-     * @throws IllegalArgumentException If the firepower is not within the valid range of
-     *                                  {@value MIN_FIRE_POWER} to {@value MAX_FIRE_POWER}.
      */
     public Dragon(final String name,
                   final Date dateOfBirth,
@@ -40,6 +37,12 @@ public class Dragon extends Creature
         this.firePower = firePower;
     }
 
+    /**
+     * Throws when the firepower is less than {@value MIN_FIRE_POWER}, or
+     * greater than {@value MAX_FIRE_POWER}.
+     *
+     * @param firePower The firepower.
+     */
     private static void validateFirePower(final int firePower)
     {
         if (firePower < MIN_FIRE_POWER || firePower > MAX_FIRE_POWER)
