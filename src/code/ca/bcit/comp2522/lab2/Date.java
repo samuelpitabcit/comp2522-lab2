@@ -12,6 +12,7 @@ public class Date
      * The number of days for each month. February has separate
      * number of days for leap and non-leap years.
      */
+
     private static final int JANUARY_DAYS = 31;
     private static final int FEBRUARY_DAYS_L = 29;
     private static final int FEBRUARY_DAYS_NL = 28;
@@ -29,6 +30,7 @@ public class Date
     /*
      * The numbers for each month that is added to the weekday sum calculation.
      */
+
     private static final int JANUARY_WC_MONTH_CODE = 1;
     private static final int FEBRUARY_WC_MONTH_CODE = 4;
     private static final int MARCH_WC_MONTH_CODE = 4;
@@ -43,6 +45,7 @@ public class Date
     /*
      * Constants for calculating the weekdays of a given date.
      */
+
     private static final int WEEKDAY_CALC_START_NUM_1800 = 2;
     private static final int WEEKDAY_CALC_START_NUM_1900 = 0;
     private static final int WEEKDAY_CALC_START_NUM_2000 = 6;
@@ -54,6 +57,7 @@ public class Date
      * Used for comparing against the Date's year, rounded to the nearest
      * century.
      */
+
     private static final int YEAR_1800 = 1800;
     private static final int YEAR_1900 = 1900;
     private static final int YEAR_2000 = 2000;
@@ -61,6 +65,7 @@ public class Date
     /*
      * Numerical month constants.
      */
+
     private static final int JANUARY = 1;
     private static final int FEBRUARY = 2;
     private static final int MARCH = 3;
@@ -77,6 +82,7 @@ public class Date
     /*
      * Numerical weekday constants.
      */
+
     private static final int SATURDAY = 0;
     private static final int SUNDAY = 1;
     private static final int MONDAY = 2;
@@ -86,21 +92,31 @@ public class Date
     private static final int FRIDAY = 6;
 
     /*
-     * Year, month, and day minimums and maximums.
+     * Year and day minimums and maximums.
      */
-    private static final int MIN_YEAR = 1800;
-    private static final int CURRENT_YEAR = 2025;
+
+    /**
+     * The minimum year allowed for this class.
+     */
+    public static final int MIN_YEAR = 1800;
+
+    /**
+     * The maximum (current) year allowed for this class.
+     */
+    public static final int CURRENT_YEAR = 2025;
     private static final int MIN_DAY = 1;
 
     /*
      * Number of units of time for one unit of time.
      */
+
     private static final int NUM_DAYS_IN_WEEK = 7;
     private static final int NUM_YEARS_IN_CENTURY = 100;
 
     /*
      * Divisors for determining the leap year.
      */
+
     private static final int LEAP_YEAR_FIRST_DIV = 4;
     private static final int LEAP_YEAR_SECOND_DIV = 100;
     private static final int LEAP_YEAR_THIRD_DIV = 400;
@@ -499,97 +515,5 @@ public class Date
         yyyyMmDd.append(String.format("%02d", this.day));
 
         return yyyyMmDd.toString();
-    }
-
-    /**
-     * Determines the number of full calendar years between two dates.
-     * The result is always non-negative, regardless of the order of the dates.
-     * A full calendar year is counted only if the end date has reached or passed
-     * the month and day of the start date (e.g., from 2000-01-01 to 2001-01-01 is 1 year,
-     * but 2000-01-01 to 2000-12-31 is 0 years).
-     *
-     * @param date1 The first date.
-     * @param date2 The second date.
-     * @return The number of full calendar years elapsed between the dates.
-     */
-    public static int calendarYearsBetween(final Date date1,
-                                           final Date date2)
-    {
-        final Date startDate;
-        final Date endDate;
-        int yearDifference;
-
-        // Determine chronological order to ensure calculation is consistent.
-        if (isDate1BeforeDate2(date1, date2))
-        {
-            startDate = date1;
-            endDate   = date2;
-        }
-        else
-        {
-            startDate = date2;
-            endDate   = date1;
-        }
-
-        // If the dates are in the same year, the difference is 0.
-        if (startDate.year == endDate.year)
-        {
-            return ZERO;
-        }
-
-        yearDifference = endDate.year - startDate.year;
-
-        /*
-         * Check if the full calendar period has been completed.
-         * The full period is NOT complete if the end date's month or month/day
-         * combination is chronologically before the start date's month/day.
-         * In such a case, we subtract one from the year difference.
-         */
-        if (endDate.month < startDate.month)
-        {
-            yearDifference -= 1;
-        }
-        else if (endDate.month == startDate.month)
-        {
-            if (endDate.day < startDate.day)
-            {
-                yearDifference -= 1;
-            }
-        }
-
-        return yearDifference;
-    }
-
-    /**
-     * Helper method to determine if date1 is chronologically before date2.
-     *
-     * @param date1 The first date.
-     * @param date2 The second date.
-     * @return {@code true} if date1 is chronologically before date2; {@code false} otherwise.
-     */
-    private static boolean isDate1BeforeDate2(final Date date1,
-                                              final Date date2)
-    {
-        if (date1.getYear() < date2.getYear())
-        {
-            return true;
-        }
-        if (date1.getYear() > date2.getYear())
-        {
-            return false;
-        }
-
-        // Years are equal, check month
-        if (date1.getMonth() < date2.getMonth())
-        {
-            return true;
-        }
-        if (date1.getMonth() > date2.getMonth())
-        {
-            return false;
-        }
-
-        // Years and months are equal, check day
-        return date1.getDay() < date2.getDay();
     }
 }

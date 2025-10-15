@@ -24,7 +24,7 @@ public class Creature
 
     // Instance identifiers.
     private final String name;
-    private final LocalDate dateOfBirth;
+    private final Date dateOfBirth;
     private int health;
 
     /**
@@ -35,11 +35,10 @@ public class Creature
      * @param health      The initial health of the creature.
      */
     public Creature(final String name,
-                    final LocalDate dateOfBirth,
+                    final Date dateOfBirth,
                     final int health)
     {
         validateName(name);
-        validateDateOfBirth(dateOfBirth);
         validateHealth(health);
 
         this.name        = name;
@@ -52,18 +51,6 @@ public class Creature
         if (name == null || name.isEmpty())
         {
             throw new IllegalArgumentException("Name is null or empty");
-        }
-    }
-
-    private static void validateDateOfBirth(final LocalDate dateOfBirth)
-    {
-        final LocalDate currentDate;
-
-        currentDate = LocalDate.now();
-
-        if (dateOfBirth.isAfter(currentDate))
-        {
-            throw new IllegalArgumentException("Birth date must not be set in the future.");
         }
     }
 
@@ -141,12 +128,7 @@ public class Creature
      */
     public long getAgeYears()
     {
-        final LocalDate currentDate;
 
-        currentDate = LocalDate.now();
-
-        // Use ChronoUnit to get the number of years between two dates.
-        return ChronoUnit.YEARS.between(currentDate, this.dateOfBirth);
     }
 
     /**
