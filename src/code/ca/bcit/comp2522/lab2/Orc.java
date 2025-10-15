@@ -62,7 +62,7 @@ public class Orc extends Creature
     {
         if (this.rage < RAGE_ADD)
         {
-            throw new LowRageException("Rage value is too low to deal damage");
+            throw new LowRageException(this.getName());
         }
 
         this.rage += RAGE_ADD;

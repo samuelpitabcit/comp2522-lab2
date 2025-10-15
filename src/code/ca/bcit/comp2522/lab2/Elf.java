@@ -62,7 +62,7 @@ public class Elf extends Creature
     {
         if (this.mana < MANA_USAGE)
         {
-            throw new LowManaException("Cannot cast a spell; mana is less than " + MANA_USAGE);
+            throw new LowManaException(this.getName());
         }
 
         this.mana -= MANA_USAGE;

@@ -8,8 +8,45 @@ package ca.bcit.comp2522.lab2;
  */
 public class LowFirePowerException extends Exception
 {
-    public LowFirePowerException(String message)
+    private final String message;
+
+    /**
+     * Constructs a new LowFirePowerException with a detailed message
+     * indicating which dragon has low firepower.
+     *
+     * @param name The name of the dragon. Must not be null or blank.
+     * @throws IllegalArgumentException if the provided name is null or blank.
+     */
+    public LowFirePowerException(final String name)
     {
-        super(message);
+        super();
+
+        validateName(name);
+
+        final StringBuilder sb;
+        sb = new StringBuilder();
+        sb.append("Dragon ");
+        sb.append(name);
+        sb.append(" does not have enough firepower to breathe fire.");
+
+        this.message = sb.toString();
+    }
+
+    private static void validateName(final String name)
+    {
+        if (name == null || name.isBlank())
+        {
+            throw new IllegalArgumentException("Name must not be null or empty.");
+        }
+    }
+
+    /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return the detail message string of this {@code LowFirePowerException} instance.
+     */
+    public String getMessage()
+    {
+        return this.message;
     }
 }

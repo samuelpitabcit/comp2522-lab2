@@ -62,8 +62,7 @@ public class Dragon extends Creature
     {
         if (this.firePower < FIRE_POWER_USAGE)
         {
-            throw new LowFirePowerException(
-                "Cannot breathe fire; firePower is less than " + FIRE_POWER_USAGE);
+            throw new LowFirePowerException(this.getName());
         }
 
         this.firePower -= FIRE_POWER_USAGE;

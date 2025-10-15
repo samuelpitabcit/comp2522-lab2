@@ -61,6 +61,16 @@ public class Creature
     }
 
     /**
+     * Gets the creature's name.
+     *
+     * @return The name of the creature.
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
      * Checks if the creature is alive.
      * A creature is considered alive if its health is greater than {@value #MIN_HEALTH}.
      *
