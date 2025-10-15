@@ -58,7 +58,7 @@ public class Orc extends Creature
      * @param creature The target creature to attack.
      * @throws LowRageException If the current rage is too low (less than {@value RAGE_ADD}) to perform the attack.
      */
-    public void berserk(final Creature creature)
+    public void berserk(final Creature creature) throws LowRageException
     {
         if (this.rage < RAGE_ADD)
         {

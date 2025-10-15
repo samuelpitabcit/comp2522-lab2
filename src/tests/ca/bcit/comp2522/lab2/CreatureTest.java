@@ -89,14 +89,27 @@ public final class CreatureTest
         // Simulate a fight and handle exceptions.
         try
         {
-            // Smaug attacks Legolas
+            System.out.println(
+                "Smaug attacks Legolas; Legolas retaliates; Grishnákh attacks Legolas."
+                    + System.lineSeparator());
+
             smaug.breatheFire(legolas);
-
-            // Legolas retaliates against Smaug
             legolas.castSpell(smaug);
-
-            // Grishnakh goes berserk on Legolas
             grishnakh.berserk(legolas);
+
+            // Get details.
+            smaug.getDetails();
+            System.out.print(System.lineSeparator());
+
+            legolas.getDetails();
+            System.out.print(System.lineSeparator());
+
+            grishnakh.getDetails();
+            System.out.print(System.lineSeparator());
+
+            System.out.println(
+                "Smaug exhausts its firepower against Grishnákh."
+                    + System.lineSeparator());
 
             // Demonstrate exception for low firepower by exhausting it
             for (int i = 0; i < EXHAUST_FIRE_POWER_ATTEMPTS; i++)
@@ -105,9 +118,23 @@ public final class CreatureTest
                 smaug.breatheFire(grishnakh);
             }
         }
-        catch (final LowFirePowerException | LowManaException | LowRageException e)
+        catch (final LowFirePowerException | LowManaException e)
         {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + System.lineSeparator());
         }
+
+        System.out.println(
+            "Results after exception:"
+                + System.lineSeparator());
+
+        // Get details.
+        smaug.getDetails();
+        System.out.print(System.lineSeparator());
+
+        legolas.getDetails();
+        System.out.print(System.lineSeparator());
+
+        grishnakh.getDetails();
+        System.out.print(System.lineSeparator());
     }
 }

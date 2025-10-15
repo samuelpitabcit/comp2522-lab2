@@ -144,7 +144,7 @@ public class Creature
     public void getDetails()
     {
         System.out.println("Name: " + this.name);
-        System.out.println("Date of birth: " + this.dateOfBirth);
+        System.out.println("Date of birth: " + this.dateOfBirth.getYyyyMmDd());
         System.out.println("Health: " + this.health);
     }
 }

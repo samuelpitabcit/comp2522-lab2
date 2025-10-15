@@ -8,6 +8,11 @@ package ca.bcit.comp2522.lab2;
  */
 public class DamageException extends RuntimeException
 {
+    /**
+     * Default constructor of RuntimeException.
+     *
+     * @param message Error message.
+     */
     public DamageException(String message)
     {
         super(message);

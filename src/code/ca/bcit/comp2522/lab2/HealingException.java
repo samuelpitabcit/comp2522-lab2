@@ -8,6 +8,11 @@ package ca.bcit.comp2522.lab2;
  */
 public class HealingException extends RuntimeException
 {
+    /**
+     * Default constructor of RuntimeException.
+     *
+     * @param message Error message.
+     */
     public HealingException(String message)
     {
         super(message);
